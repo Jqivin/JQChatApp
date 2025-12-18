@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/JQChat">
+        <file>translates/JQChat.qm</file>
+        <file>css/JQChat.css</file>
+        <file>images/icon.png</file>
+    </qresource>
+</RCC>

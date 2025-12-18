@@ -1,0 +1,11 @@
+/*------ Login  begin------*/
+LoginDlg QLabel#lbUserName,
+LoginDlg QLabel#lbUserName_2,
+LoginDlg QLabel#lbPassword,
+LoginDlg QLabel#lbPassword_2
+{
+	color:red;
+	font-size: 15px;
+    font-family: Microsoft YaHei;
+}
+/*------ Login  end  ------*/
