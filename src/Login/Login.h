@@ -3,18 +3,24 @@
 #include "ui_Login.h"
 #include "CommonDefines.h"
 #include <QJsonObject>
+#include <QDialog>
+#include "FramelessHelper.h"
 
 class LoginDlg : public QDialog
 {
 	Q_OBJECT
 public:
-	LoginDlg();
+	LoginDlg(QWidget* parent = nullptr);
 	~LoginDlg();
 
 private:
 	void Init();
 	// 处理登录成功数据
 	void DealLoginSuccess(const QJsonObject& jsRes);
+
+
+protected:
+	void paintEvent(QPaintEvent*);
 
 private slots:
 	void OnDealLogin();

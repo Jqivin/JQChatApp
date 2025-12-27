@@ -2,20 +2,41 @@
 #include "JQAppManager.h"
 #include "TcpClientManager.h"
 #include <QJsonDocument>
-
+#include <QPaintEvent>
+#include <QPainter>
+#include <QPainterPath>
 #include <QJsonArray>
+#include <QGraphicsDropShadowEffect>
 
 #include "Logger.h"
 #include "TcpSingleRequest.h"
 
-LoginDlg::LoginDlg()
+LoginDlg::LoginDlg(QWidget* parent)
+	:QDialog(parent)
 {
 	ui.setupUi(this);
+	setWindowFlags(Qt::FramelessWindowHint);
+	setAttribute(Qt::WA_TranslucentBackground);
+
+	auto* frameless = new FramelessHelper(this);
+	frameless->setTitleBarHeight(60);
+
 
 	Init();
 
 	qRegisterMetaType<std::vector<UserInfo_t>>("std::vector<UserInfo_t>");
 	qRegisterMetaType<QVector<QJsonObject>>("QVector<QJsonObject>");
+
+	// 加阴影
+	// 创建一个QGraphicsDropShadowEffect对象，并设置模糊半径和阴影颜色
+	QGraphicsDropShadowEffect* shadowEffect = new QGraphicsDropShadowEffect(this);
+
+	shadowEffect->setBlurRadius(10);
+	shadowEffect->setColor(Qt::black);
+	shadowEffect->setOffset(0, 0);
+
+	// 将不规则图形应用阴影效果
+	setGraphicsEffect(shadowEffect);
 }
 
 LoginDlg::~LoginDlg()
@@ -119,4 +140,15 @@ void LoginDlg::OnDealLogin()
 void LoginDlg::OnDealRegiste()
 {
 
+}
+
+void LoginDlg::paintEvent(QPaintEvent* e)
+{
+	QPainter painter(this);
+	painter.setRenderHint(QPainter::Antialiasing, true);
+
+	QPainterPath path;
+	path.addRoundedRect(rect(), 10, 10);
+
+	painter.fillPath(path, QColor(255, 255, 255));
 }

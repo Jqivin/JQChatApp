@@ -90,6 +90,16 @@ list(APPEND ALL_SOURCES_AND_HEADERS ${Net_SOURCES})
 list(APPEND ALL_SOURCES_AND_HEADERS ${NET_HEADS})
 include_directories(src/Net)
 
+#Public
+file(GLOB Public_HEADS
+    src/Public/*.h
+)
+aux_source_directory(src/Public Public_SOURCES)
+source_group(src\\Public FILES ${Public_SOURCES} ${Public_HEADS})
+list(APPEND ALL_SOURCES_AND_HEADERS ${Public_SOURCES})
+list(APPEND ALL_SOURCES_AND_HEADERS ${Public_HEADS})
+include_directories(src/Public)
+
 #Log
 file(GLOB Log_HEADS
     src/Log/*.h

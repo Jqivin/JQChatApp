@@ -31,6 +31,7 @@ int main(int argc, char *argv[])
 	
 	LoadResources(&a);
 
+
 	if (JQApp.InitInstance())
 	{
 		a.exec();

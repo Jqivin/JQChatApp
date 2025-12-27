@@ -1,4 +1,10 @@
 /*------ Login  begin------*/
+LoginDlg
+{
+	background-color:#ffffff;
+	border: 1px solid #b1b1b1; /* 边框颜色 */
+    border-radius: 10px; /* 圆角 */
+}
 LoginDlg QLabel#lbUserName,
 LoginDlg QLabel#lbUserName_2,
 LoginDlg QLabel#lbPassword,
@@ -8,4 +14,46 @@ LoginDlg QLabel#lbPassword_2
 	font-size: 15px;
     font-family: Microsoft YaHei;
 }
+LoginDlg QLabel#lbPassword{
+	color:#74bc40;
+}
+
+LoginDlg QPushButton#btnClose
+{
+	background:transparent;
+	color:#4d4d4d;
+}
+
+QLineEdit {
+    /* 设置宽度、边框和背景 */
+    border: 2px solid #4CAF50; /* 边框颜色 */
+    border-radius: 10px; /* 圆角 */
+    padding: 5px 10px; /* 内边距 */
+    font-size: 14px; /* 字体大小 */
+    background: #f9f9f9; /* 背景色 */
+    color: #333333; /* 文本颜色 */
+    transition: all 0.3s ease; /* 平滑过渡 */
+}
+
+QLineEdit:focus {
+    /* 聚焦时的样式 */
+    border: 2px solid #4CAF50; /* 聚焦边框颜色 */
+    background: #e9ffe5; /* 聚焦时的背景色 */
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.6); /* 聚焦时的阴影 */
+    color: #333333; /* 文本颜色 */
+}
+
+QLineEdit:disabled {
+    /* 禁用时的样式 */
+    background-color: #f0f0f0;
+    border: 2px solid #cccccc;
+    color: #a0a0a0;
+}
+
+QLineEdit::placeholder {
+    /* 占位符文本样式 */
+    color: #a0a0a0;
+    font-style: italic;
+}
+
 /*------ Login  end  ------*/

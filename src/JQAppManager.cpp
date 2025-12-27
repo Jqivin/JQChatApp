@@ -33,11 +33,10 @@ bool JQAppManager::InitInstance()
 		m_tcpclientManager->connectToServer("192.168.32.128", 8000);
 		connect(m_tcpclientManager, &TcpClientManager::connected,this, [=] {
 			LOG_INFO("connect success.");
-			InitUi();
 			return true;
 		});
 	}
-	
+	InitUi();
 	return true;
 }
 void JQAppManager::InitUi()
