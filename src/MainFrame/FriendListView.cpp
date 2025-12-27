@@ -6,7 +6,7 @@
 #include <QDebug>
 #include <algorithm>
 #include "JQAppManager.h"
-#include "TcpClientManager.h"
+#include "TlsClientManager.h"
 #include "JQChatMainFrame.h"
 
 FriendWidget::FriendWidget(const UserInfo_t& info)
@@ -93,7 +93,7 @@ FriendListView::FriendListView(QWidget *parent)
 	qRegisterMetaType<FriendWidget>("FriendWidget");
 	setDragMode(QGraphicsView::NoDrag);
 
-	connect(JQApp.m_tcpclientManager, &TcpClientManager::SignalMsgReceived, this, &FriendListView::OnDealMsgReceived);
+	connect(JQApp.m_tlsclientManager, &TlsClientManager::SignalMsgReceived, this, &FriendListView::OnDealMsgReceived);
 	
 }
 

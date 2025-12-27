@@ -140,8 +140,8 @@ list(APPEND ALL_SOURCES_AND_HEADERS ${SRC_SOURCES})
 #main
 
 set(Net_HEADS
-	src/Net/TcpClient.h
-	src/Net/TcpClientManager.h
+	src/Net/TlsClient.h
+	src/Net/TlsClientManager.h
 )
 aux_source_directory(src/Net Net_SOURCES)
 source_group(src\\Net FILES ${Net_SOURCES} ${Net_HEADS})
@@ -182,6 +182,9 @@ set_property(GLOBAL PROPERTY SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 add_executable(JQChat ${ALL_SOURCES_AND_HEADERS})
 
 
+if(MSVC)
+    add_compile_options(/MP)  # /MP=启用多核编译
+endif()
 # 设置输出路径 废弃。使用这种方式会增加个debug/release
 # set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 

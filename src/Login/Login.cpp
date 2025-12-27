@@ -1,6 +1,6 @@
 #include "Login.h"
 #include "JQAppManager.h"
-#include "TcpClientManager.h"
+#include "TlsClientManager.h"
 #include <QJsonDocument>
 #include <QPaintEvent>
 #include <QPainter>
@@ -9,7 +9,7 @@
 #include <QGraphicsDropShadowEffect>
 
 #include "Logger.h"
-#include "TcpSingleRequest.h"
+#include "TlsSingleRequest.h"
 
 LoginDlg::LoginDlg(QWidget* parent)
 	:QDialog(parent)
@@ -55,6 +55,11 @@ void LoginDlg::Init()
 		ui.stackedWidget->setCurrentIndex(1);
 	});
 	ui.stackedWidget->setCurrentIndex(0);
+
+	connect(ui.btnClose, &QPushButton::clicked, this, [=] {
+		reject();
+		close();
+	});
 }
 
 void LoginDlg::DealLoginSuccess(const QJsonObject& jsRes)
@@ -116,8 +121,8 @@ void LoginDlg::OnDealLogin()
 	jsonData["id"] = iuserid;
 	jsonData["password"] = strPassword;
 
-	TcpSingleRequestPtr pSingleReq = JQApp.m_tcpclientManager->SendRequest(jsonData);
-	connect(pSingleReq.get(), &TcpSingleRequest::dataReceived, this, [=](const QJsonObject& jsRes) {
+	TlsSingleRequestPtr pSingleReq = JQApp.m_tlsclientManager->SendRequest(jsonData);
+	connect(pSingleReq.get(), &TlsSingleRequest::dataReceived, this, [=](const QJsonObject& jsRes) {
 
 		int errcode = jsRes["errno"].toInt();
 		if (10000 == errcode)

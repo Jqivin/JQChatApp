@@ -5,7 +5,7 @@
 #include <QString>
 #include <QFile>
 
-// ¼ÓÔØ×ÊÔ´ÎÄ¼þ
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½Ä¼ï¿½
 void LoadResources(QApplication* app)
 {
 	QTranslator* tranlate = new QTranslator();
@@ -32,9 +32,14 @@ int main(int argc, char *argv[])
 	LoadResources(&a);
 
 
-	if (JQApp.InitInstance())
+	if (!JQApp.InitInstance())
 	{
-		a.exec();
+		return 0;
 	}
+
+	a.exec();
+
+	JQApp.ExitInstance();
+
 	return 0;
 }

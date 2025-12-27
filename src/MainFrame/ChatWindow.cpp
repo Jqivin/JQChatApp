@@ -10,7 +10,7 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include "JQAppManager.h"
-#include "TcpClientManager.h"
+#include "TlsClientManager.h"
 
 
 ChatWindow::ChatWindow(QWidget* parent)
@@ -122,7 +122,7 @@ void ChatWindow::SendMessageToFriend(const QString& strText)
 	jsData["name"] = JQApp.m_userInfo.strUserName.c_str();
 	jsData["time"] = getCurrentTime().c_str();
 
-	JQApp.m_tcpclientManager->SendRequest(jsData);
+	JQApp.m_tlsclientManager->SendRequest(jsData);
 }
 
 std::string ChatWindow::getCurrentTime()

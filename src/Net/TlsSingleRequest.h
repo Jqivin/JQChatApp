@@ -3,12 +3,12 @@
 #include <QObject>
 #include <functional>
 
-class TcpSingleRequest : public QObject
+class TlsSingleRequest : public QObject
 {
     Q_OBJECT
 public:
-    TcpSingleRequest(int iReqId);
-    ~TcpSingleRequest();
+    TlsSingleRequest(int iReqId);
+    ~TlsSingleRequest();
 
     int GetRequestId() { return m_iRequestId; }
 signals:
@@ -18,4 +18,4 @@ private:
     int             m_iRequestId;       // «Î«Ûid
 };
 
-using TcpSingleRequestPtr = std::shared_ptr<TcpSingleRequest>;
+using TlsSingleRequestPtr = std::shared_ptr<TlsSingleRequest>;

@@ -3,5 +3,6 @@
         <file>translates/JQChat.qm</file>
         <file>css/JQChat.css</file>
         <file>images/icon.png</file>
+		<file>ca/ca.crt</file>
     </qresource>
 </RCC>

@@ -4,7 +4,7 @@
 
 class JQChatMainFrame;
 class LoginDlg;
-class TcpClientManager;
+class TlsClientManager;
 
 class JQAppManager : public QObject
 {
@@ -13,27 +13,27 @@ public:
 	JQAppManager();
 	~JQAppManager();
 
-	// ³õÊ¼»¯
+	// ï¿½ï¿½Ê¼ï¿½ï¿½
 	bool InitInstance();
-	// ÇåÀí×ÊÔ´
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´
 	void ExitInstance();
-	// ÉèÖÃµ±Ç°ÓÃ»§
+	// ï¿½ï¿½ï¿½Ãµï¿½Ç°ï¿½Ã»ï¿½
 	void SetUserInfo(const UserInfo_t& info);
 
 private:
-	void InitUi();
+	bool InitUi();
 
 public:
 
-	JQChatMainFrame*		m_pChatMainFrame;	// Ö÷¿ò¼Ü
-	LoginDlg*				m_pLoginDlg;		// µÇÂ¼½çÃæ
-	TcpClientManager*		m_tcpclientManager; // ÍøÂç¹ÜÀíÄ£¿é
+	JQChatMainFrame*		m_pChatMainFrame;	// ï¿½ï¿½ï¿½ï¿½ï¿½
+	LoginDlg*				m_pLoginDlg;		// ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
+	TlsClientManager*		m_tlsclientManager; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
 
 
-	UserInfo_t				m_userInfo;			// ÒÑµÇÂ¼ÓÃ»§ÐÅÏ¢	
+	UserInfo_t				m_userInfo;			// ï¿½Ñµï¿½Â¼ï¿½Ã»ï¿½ï¿½ï¿½Ï¢	
 
 };
 
-// ÉùÃ÷
+// ï¿½ï¿½ï¿½ï¿½
 extern JQAppManager JQApp;
 

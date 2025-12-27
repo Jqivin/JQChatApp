@@ -2,21 +2,21 @@
 
 #include <QObject>
 #include <QThread>
-#include "TcpClient.h"
-#include "TcpSingleRequest.h"
+#include "TlsClient.h"
+#include "TlsSingleRequest.h"
 #include <map>
 
-class TcpClientManager : public QObject
+class TlsClientManager : public QObject
 {
     Q_OBJECT
 public:
-    explicit TcpClientManager(QObject* parent = nullptr);
-    ~TcpClientManager();
+    explicit TlsClientManager(QObject* parent = nullptr);
+    ~TlsClientManager();
 
     void connectToServer(const QString& host, quint16 port);
     void disconnectFromServer();
-    TcpSingleRequestPtr SendRequest(QJsonObject jsData);
-
+    
+    TlsSingleRequestPtr SendRequest(QJsonObject jsData);
 signals:
     // ×ª·¢¸ø UI
     void connected();
@@ -25,12 +25,13 @@ signals:
     void SignalMsgReceived(const QJsonObject& json);
 
 private slots:
-    void OnDataReceived(QByteArray data);
+    void OnDataReceived(QJsonObject jsResponse);
+
 
 private:
     QThread m_thread;
-    TcpClient* m_client;
-    std::map<int,std::shared_ptr<TcpSingleRequest>> m_mapReqs;
+    TlsClient* m_client;
+    std::map<int,std::shared_ptr<TlsSingleRequest>> m_mapReqs;
     std::atomic_int m_iReqID;
 };
 
